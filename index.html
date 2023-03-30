@@ -45,22 +45,23 @@
     </section>
 
     <section id="chooseAttack">
-        <h2>Elige tu ataque!!</h2>
-        <p>Tu mascota tiene <span>3</span> vidas</p>
-        <p>La mascota del enemigo tiene <span>3</span> vidas</p>
+        <h2>Elige tu ataque!!</h2><br>
+        <p>Tu mascota es <span id="petPlayer"></span> y tiene <span>3</span> vidas</p><br>
+        <p>La mascota del enemigo es <span id="petEnemigo"></span> y tiene <span>3</span> vidas</p><br>
 
         
         <p>
-            <button id="btn-water-atk">Agua <img src="./assets/droplet.png" alt="water" width="30px"></button>
-            <button id="btn-fire-atk">Fuego <img src="./assets/fuego.png" alt="fire" width="30px"></button>
-            <button id="btn-dirt-atk">Tierra <img src="./assets/hoja.png" alt="life" width="30px"></button>
-        </p>
+            <button id="btnWaterAtk">Agua <img src="./assets/droplet.png" alt="water" width="30px"></button>
+            <button id="btnFireAtk">Fuego <img src="./assets/fuego.png" alt="fire" width="30px"></button>
+            <button id="btnDirtAtk">Tierra <img src="./assets/hoja.png" alt="life" width="30px"></button>
+        </p><br>
 
     </section>
 
     <section id="messages">
-        <p>Tu <span>mascota</span> ataco con <span>ataque</span></p>
-        <p>El enemigo uso a <span>mascota</span> y ataco con <span>ataque</span></p>
+        <p>Tu mascota<span id="petPlayerTwo"></span> ataco con <span id="playerAtk">ataque</span></p><br>
+        <p>El enemigo uso a <span id="petEnemigoTwo">mascota</span> y ataco con <span id="enemyAtk">ataque</span></p><br>
+        <p>El ganador de este round es.... <span id="winner"></span></p>
 
     </section>
 
