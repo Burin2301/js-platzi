@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
+    <title>MOKEPON!</title>
+</head>
+<body>
+    <h1>MOKEPON! 
+        <img src="./assets/droplet.png" alt="water" width="30px">
+        <img src="./assets/fuego.png" alt="fire" width="30px">
+        <img src="./assets/hoja.png" alt="life" width="30px">
+    </h1>
+    <br><br>
+    <section id="pets">
+        <h2>Elige a tu mascota!!</h2>
+        <br>
+
+        <input type="radio" name="pet" id="hipodoge">   
+        <label for="hipodoge">Hipodoge <img src="./assets/droplet.png" alt="water" width="30px"><br></label>
+
+        <input type="radio" name="pet" id="capipepo">  
+        <label for="capipepo">Capipepo <img src="./assets/hoja.png" alt="life" width="30px"><br></label>
+
+        <input type="radio" name="pet" id="ratigueya">  
+        <label for="ratigueya">Ratigueya <img src="./assets/fuego.png" alt="fire" width="40px"><br></label>
+
+        <input type="radio" name="pet" id="langostelvis">  
+        <label for="langostelvis">Langostelvis <img src="./assets/droplet.png" alt="water" width="30px"> <img src="./assets/fuego.png" alt="fire" width="40px"> <br></label>
+
+        <input type="radio" name="pet" id="tucapalma">  
+        <label for="tucapalma">Tucapalma <img src="./assets/droplet.png" alt="water" width="30px"> <img src="./assets/hoja.png" alt="life" width="30px"> <br></label>
+
+        <input type="radio" name="pet" id="pydos">  
+        <label for="pydos">Pydos <img src="./assets/hoja.png" alt="life" width="30px"> <img src="./assets/fuego.png" alt="fire" width="40px"> <br><br></label>
+
+        <br>
+        <button id="btn-choose-pet">Seleccionar</button>
+        <br>
+        <br>
+
+    </section>
+
+    <section id="chooseAttack">
+        <h2>Elige tu ataque!!</h2>
+        <p>Tu mascota tiene <span>3</span> vidas</p>
+        <p>La mascota del enemigo tiene <span>3</span> vidas</p>
+
+        
+        <p>
+            <button id="btn-water-atk">Agua <img src="./assets/droplet.png" alt="water" width="30px"></button>
+            <button id="btn-fire-atk">Fuego <img src="./assets/fuego.png" alt="fire" width="30px"></button>
+            <button id="btn-dirt-atk">Tierra <img src="./assets/hoja.png" alt="life" width="30px"></button>
+        </p>
+
+    </section>
+
+    <section id="messages">
+        <p>Tu <span>mascota</span> ataco con <span>ataque</span></p>
+        <p>El enemigo uso a <span>mascota</span> y ataco con <span>ataque</span></p>
+
+    </section>
+
+    <section id="restart">
+        <button id="btn-restart">Reiniciar</button>
+
+    </section>
+
+
+    
+    
+</body>
+</html>
