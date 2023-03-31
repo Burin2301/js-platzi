@@ -3,6 +3,9 @@ let enemyAttack
 let playerLifes
 let enemyLifes
 
+let roundWinner
+
+
 function startGame(){
     let btnPetPlayer = document.getElementById(`btn-choose-pet`);
     btnPetPlayer.addEventListener(`click`, choosePetPlayer);
@@ -21,7 +24,10 @@ function startGame(){
     btnDirt.addEventListener(`click`, dirtAttack);
     btnDirt.addEventListener(`click`, enemyChooseAttack);
 
-    battle()
+    let btnFight = document.getElementById(`fight`);
+    btnFight.addEventListener(`click`, battle(playerAttack,enemyAttack));
+
+    
 }
 
 function choosePetEnemy(){
@@ -78,60 +84,55 @@ let inputHipodoge = document.getElementById(`hipodoge`);
 }
 
 function waterAttack(){
-    playerAttack = `Water Attack!!`;
+    playerAttack = `Agua`;
     let playerAttackTipe = document.getElementById(`playerAtk`);
     playerAttackTipe.innerHTML= playerAttack;
 }
 function fireAttack(){
-    playerAttack = `Fire Attack!!`;
+    playerAttack = `Fuego`;
     let playerAttackTipe = document.getElementById(`playerAtk`);
     playerAttackTipe.innerHTML= playerAttack;
 }
 function dirtAttack(){
-    playerAttack = `Dirt Attack!!`;
+    playerAttack = `Tierra`;
     let playerAttackTipe = document.getElementById(`playerAtk`);
     playerAttackTipe.innerHTML= playerAttack;
 }
 function enemyChooseAttack(){
     enemyAttack = Math.floor((Math.random() * 3 ) + 1)
     if(enemyAttack == 1){
-        enemyAttack = `Water Attack!!`;
+        enemyAttack = `Agua`;
     }else if(enemyAttack == 2){
-        enemyAttack = `Fire Attack!!`;
+        enemyAttack = `Fuego`;
     }else if(enemyAttack == 3){
-        enemyAttack = `Dirt Attack!!`;
+        enemyAttack = `Tierra`;
     }
 
     let enemyAtk = document.getElementById(`enemyAtk`);
     enemyAtk.innerHTML= enemyAttack;
 }
 
-//logica: water>fire fire>dirt dirt>water
+//logica: water>fire fire>dirt dirt>water Winner
+//logica: fire>water dirt>fire water>dirt Lose
 
-function battle(playerAttack,enemyAttack){
+function battle(a,b){
 
-    let roundWinner
-    
-    
-    if(playerAttack==`Water Attack!!` && enemyAttack == `Fire Attack!!`){
-        playerLifes ++;
-        roundWinner = `The Player!`
-    }else if(playerAttack==`Fire Attack!!` && enemyAttack == `Dirt Attack!!`){
-        playerLifes ++;
-        roundWinner = `The Player!`
-    }else if(playerAttack==`Dirt Attack!!` && enemyAttack == `Water Attack!!`){
-        playerLifes ++;
-        roundWinner = `The Player!`
-    }else if(playerAttack == enemyAttack){
-        roundWinner = `No one, it is a Draw!!`
-    }else{
-        enemyLifes ++;
-        roundWinner = `The Enemy!!`
+    if(a === `Agua` && b ===`Fuego` || a === `Fuego` && b ===`Tierra` || a === `Tierra` && b ===`Agua`){
+        playerLifes -=`1`;
+        roundWinner = `Ganaste`;
+        return roundWinner
+    }else if(a === `Fuego` && b ===`Agua` || a === `Tierra` && b ===`Fuego` || a === `Agua` && b ===`Tierra`){
+        enemyLifes -=`1`;
+        roundWinner = `Perdiste`;
+        return roundWinner
+    }else if(a === `Fuego` && b ===`Fuego` || a === `Agua` && b ===`Agua` || a === `Tierra` && b ===`Tierra`){
+        roundWinner = `Es un empate!`;
+        return roundWinner;
     }
-
     
     let winnerSpan = document.getElementById(`winner`)
     winnerSpan.innerHTML = roundWinner;
+      
 }
 
 startGame()
