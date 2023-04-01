@@ -2,6 +2,7 @@ let playerAttack
 let enemyAttack
 let playerLifes
 let enemyLifes
+let enemyMokepon
 
 let roundWinner
 
@@ -46,10 +47,10 @@ function choosePetEnemy(){
     }else if(enemyPet==6){
         enemyPetChosen = `Pydos`;
     }
+    enemyMokepon = enemyPetChosen
     let petEnemy = document.getElementById(`petEnemigo`);
-    let petEnemyTwo = document.getElementById(`petEnemigoTwo`);
     petEnemy.innerHTML= enemyPetChosen;
-    petEnemyTwo.innerHTML= enemyPetChosen;
+    
 }
 
 function choosePetPlayer(){
@@ -98,6 +99,9 @@ function dirtAttack(){
     let playerAttackTipe = document.getElementById(`playerAtk`);
     playerAttackTipe.innerHTML= playerAttack;
 }
+
+
+
 function enemyChooseAttack(){
     enemyAttack = Math.floor((Math.random() * 3 ) + 1)
     if(enemyAttack == 1){
@@ -107,9 +111,15 @@ function enemyChooseAttack(){
     }else if(enemyAttack == 3){
         enemyAttack = `Tierra`;
     }
+    crearMensaje();
+}
 
-    let enemyAtk = document.getElementById(`enemyAtk`);
-    enemyAtk.innerHTML= enemyAttack;
+function crearMensaje(){
+    let parrafo = document.createElement(`p`);
+    parrafo.innerHTML = `El enemigo uso `+ enemyMokepon + ` y ataco con ` + enemyAttack;
+    let msgSection = document.getElementById(`messages`);
+    msgSection.appendChild(parrafo)
+
 }
 
 //logica: water>fire fire>dirt dirt>water Winner
@@ -129,11 +139,8 @@ function battle(a,b){
         roundWinner = `Es un empate!`;
         return roundWinner;
     }
-    
-    let winnerSpan = document.getElementById(`winner`)
-    winnerSpan.innerHTML = roundWinner;
+
       
 }
 
 startGame()
-
