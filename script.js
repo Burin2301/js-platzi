@@ -24,10 +24,6 @@ function startGame(){
     let btnDirt = document.getElementById(`btnDirtAtk`);
     btnDirt.addEventListener(`click`, dirtAttack);
     btnDirt.addEventListener(`click`, enemyChooseAttack);
-
-    let btnFight = document.getElementById(`fight`);
-    btnFight.addEventListener(`click`, battle(playerAttack,enemyAttack));
-
     
 }
 
@@ -111,12 +107,13 @@ function enemyChooseAttack(){
     }else if(enemyAttack == 3){
         enemyAttack = `Tierra`;
     }
-    crearMensaje();
+    battle(playerAttack,enemyAttack);
+    
 }
 
-function crearMensaje(){
+function crearMensaje(resultado){
     let parrafo = document.createElement(`p`);
-    parrafo.innerHTML = `El enemigo uso `+ enemyMokepon + ` y ataco con ` + enemyAttack;
+    parrafo.innerHTML = `El enemigo uso `+ enemyMokepon + ` y ataco con ` + enemyAttack +` - `+ resultado;
     let msgSection = document.getElementById(`messages`);
     msgSection.appendChild(parrafo)
 
@@ -127,17 +124,16 @@ function crearMensaje(){
 
 function battle(a,b){
 
-    if(a === `Agua` && b ===`Fuego` || a === `Fuego` && b ===`Tierra` || a === `Tierra` && b ===`Agua`){
-        playerLifes -=`1`;
-        roundWinner = `Ganaste`;
-        return roundWinner
-    }else if(a === `Fuego` && b ===`Agua` || a === `Tierra` && b ===`Fuego` || a === `Agua` && b ===`Tierra`){
-        enemyLifes -=`1`;
-        roundWinner = `Perdiste`;
-        return roundWinner
-    }else if(a === `Fuego` && b ===`Fuego` || a === `Agua` && b ===`Agua` || a === `Tierra` && b ===`Tierra`){
-        roundWinner = `Es un empate!`;
-        return roundWinner;
+    if(a == b){
+        crearMensaje('Empate')
+    }else if(a == 'Agua' && b == 'Fuego'){
+        crearMensaje('Ganaste')
+    }else if(a == 'Fuego' && b == 'Tierra'){
+        crearMensaje('Ganaste')
+    }else if(a == 'Tierra' && b == 'Agua'){
+        crearMensaje('Ganaste')
+    }else{
+        crearMensaje('Perdiste')
     }
 
       
