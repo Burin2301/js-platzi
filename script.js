@@ -11,7 +11,7 @@ function startGame(){
     //Escondo secciones para que al inicio solo se pueda elegir el mokepon
 
     let sectionAtk = document.getElementById("chooseAttack")
-    sectionAtk.style.display = `none`; 
+    sectionAtk.style.display = `none`;
     let sectionMsg = document.getElementById(`messages`)
     sectionMsg.style.display = `none`
     let sectionRestart = document.getElementById(`restart`)
