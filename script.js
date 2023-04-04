@@ -68,7 +68,7 @@ function choosePetPlayer(){
     let sectionPets = document.getElementById(`pets`)
     sectionPets.style.display = `none`
     let sectionAtk = document.getElementById("chooseAttack")
-    sectionAtk.style.display = `block`; 
+    sectionAtk.style.display = `flex`; 
 
 
 
@@ -110,7 +110,7 @@ function waterAttack(){
     let playerAttackTipe = document.getElementById(`playerAtk`);
     playerAttackTipe.innerHTML= playerAttack;
     let sectionMsg = document.getElementById(`messages`)
-    sectionMsg.style.display = `block`
+    sectionMsg.style.display = `flex`
 }
 function fireAttack(){
     playerAttack = `Fuego`;
@@ -125,7 +125,7 @@ function dirtAttack(){
     let playerAttackTipe = document.getElementById(`playerAtk`);
     playerAttackTipe.innerHTML= playerAttack;
     let sectionMsg = document.getElementById(`messages`)
-    sectionMsg.style.display = `block`
+    sectionMsg.style.display = `flex`
 }
 
 
@@ -145,7 +145,7 @@ function enemyChooseAttack(){
 
 function crearMensaje(resultado){
     let parrafo = document.createElement(`p`);
-    parrafo.innerHTML = `El enemigo uso `+ enemyMokepon + ` y ataco con ` + enemyAttack +` - `+ resultado;
+    parrafo.innerHTML = `El enemigo uso `+ enemyMokepon + ` y atacó con ` + enemyAttack +` - `+ resultado;
     let msgSection = document.getElementById(`messages`);
     msgSection.appendChild(parrafo)
 
@@ -217,13 +217,13 @@ function checkLifes(){
     if(enemyLifes == 0){
         crearMensajeFinal("Has ganado, el Mokepon enemigo se ha debilitado")
         let sectionRestart = document.getElementById(`restart`)
-        sectionRestart.style.display = `block`
+        sectionRestart.style.display = `flex`
         
 
     }else if(playerLifes == 0){
         crearMensajeFinal("Has perdido, tu Mokepon se ha debilitado")
         let sectionRestart = document.getElementById(`restart`)
-        sectionRestart.style.display = `block`
+        sectionRestart.style.display = `flex`
         
     }
 }
