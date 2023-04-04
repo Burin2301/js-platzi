@@ -19,6 +19,7 @@
     --fairy-tale: hsla(331, 61%, 84%, 1);
 }
 body{
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +29,10 @@ body{
     background-position: center;
     background-repeat: no-repeat;
 }
-section{
+a{
+    text-decoration: none;
+}
+section {
     display: flex;
 }
 h1{
@@ -84,7 +88,7 @@ h2{
 .choose-attack{
     background-color: var(--fairy-tale);
     width: 60%;
-    height: 60vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,3 +123,53 @@ h2{
 }
 
 
+.message{
+    display: flex;
+    flex-direction: column;
+}
+.message h3{
+    text-align: center;
+    padding: 15px;
+    background-color: var(--ucla-blue);
+    color: white;
+    border-radius: 30px;
+}
+.message .platerAtk{
+    text-align: center;
+    background-color: var(--orange-web);
+    color: var(--ucla-blue);
+    border-radius: 30px;
+}
+.message p{
+    text-align: center;
+    background-color: var(--orange-web);
+    color: var(--ucla-blue);
+    border-radius: 30px;
+}
+
+.restartbtn{
+    padding: 15px;  
+    background-color: var(--fairy-tale);  
+    color: black;
+    border-radius: 10px;
+}
+
+footer{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 30px;
+    background-color: var(--sea-green);
+    margin-top: auto;
+}
+.referral{
+    padding: 5px 10px;
+    background-color: var(--ucla-blue);
+    border-radius: 15px;
+    
+}
+.referral:hover{
+    transform: scale(1.3);
+    transition: 0.5s;
+}
