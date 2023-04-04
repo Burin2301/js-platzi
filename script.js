@@ -1,13 +1,23 @@
-let playerAttack
-let enemyAttack
-let playerLifes
-let enemyLifes
-let enemyMokepon
-
-let roundWinner
-
+let playerAttack;
+let enemyAttack;
+let enemyMokepon;
+let roundWinner;
+let playerLifes = 3;
+let enemyLifes = 3;
 
 function startGame(){
+
+
+    //Escondo secciones para que al inicio solo se pueda elegir el mokepon
+
+    let sectionAtk = document.getElementById("chooseAttack")
+    sectionAtk.style.display = `none`; 
+    let sectionMsg = document.getElementById(`messages`)
+    sectionMsg.style.display = `none`
+    let sectionRestart = document.getElementById(`restart`)
+    sectionRestart.style.display = `none`
+
+
     let btnPetPlayer = document.getElementById(`btn-choose-pet`);
     btnPetPlayer.addEventListener(`click`, choosePetPlayer);
     btnPetPlayer.addEventListener(`click`, choosePetEnemy);
@@ -24,6 +34,10 @@ function startGame(){
     let btnDirt = document.getElementById(`btnDirtAtk`);
     btnDirt.addEventListener(`click`, dirtAttack);
     btnDirt.addEventListener(`click`, enemyChooseAttack);
+
+
+    let btnRestart = document.getElementById("btn-restart");
+    btnRestart.addEventListener(`click`,restartGame)
     
 }
 
@@ -50,7 +64,15 @@ function choosePetEnemy(){
 }
 
 function choosePetPlayer(){
-let inputHipodoge = document.getElementById(`hipodoge`);
+    
+    let sectionPets = document.getElementById(`pets`)
+    sectionPets.style.display = `none`
+    let sectionAtk = document.getElementById("chooseAttack")
+    sectionAtk.style.display = `block`; 
+
+
+
+    let inputHipodoge = document.getElementById(`hipodoge`);
     let inputCapipepo = document.getElementById(`capipepo`);
     let inputRatigueya = document.getElementById(`ratigueya`);
     let inputLangostelvis = document.getElementById(`langostelvis`);
@@ -78,22 +100,32 @@ let inputHipodoge = document.getElementById(`hipodoge`);
     playerPet.innerHTML= pet;
     playerPetTwo.innerHTML= pet;
 
+    let btnPetPlayer = document.getElementById(`btn-choose-pet`);
+    btnPetPlayer.disabled = true;
+
 }
 
 function waterAttack(){
     playerAttack = `Agua`;
     let playerAttackTipe = document.getElementById(`playerAtk`);
     playerAttackTipe.innerHTML= playerAttack;
+    let sectionMsg = document.getElementById(`messages`)
+    sectionMsg.style.display = `block`
 }
 function fireAttack(){
     playerAttack = `Fuego`;
     let playerAttackTipe = document.getElementById(`playerAtk`);
     playerAttackTipe.innerHTML= playerAttack;
+    let sectionMsg = document.getElementById(`messages`)
+    sectionMsg.style.display = `block`
+    
 }
 function dirtAttack(){
     playerAttack = `Tierra`;
     let playerAttackTipe = document.getElementById(`playerAtk`);
     playerAttackTipe.innerHTML= playerAttack;
+    let sectionMsg = document.getElementById(`messages`)
+    sectionMsg.style.display = `block`
 }
 
 
@@ -119,24 +151,81 @@ function crearMensaje(resultado){
 
 }
 
+function crearMensajeFinal(resultadoFinal){
+    let parrafoFinal = document.createElement(`p`);
+    parrafoFinal.innerHTML = resultadoFinal
+    let msgSection = document.getElementById(`messages`);
+    msgSection.appendChild(parrafoFinal)
+
+    let btnWater = document.getElementById(`btnWaterAtk`);
+    btnWater.disabled = true
+    ;
+    
+
+    let btnFire = document.getElementById(`btnFireAtk`);
+    btnFire.disabled = true;
+
+
+    let btnDirt = document.getElementById(`btnDirtAtk`);
+    btnDirt.disabled = true;
+
+}
+
 //logica: water>fire fire>dirt dirt>water Winner
 //logica: fire>water dirt>fire water>dirt Lose
 
 function battle(a,b){
 
+    let vidasPlayer = document.getElementById("ownLifes");
+    let vidasEnemy = document.getElementById ("enemyLifes");
+
     if(a == b){
         crearMensaje('Empate')
+
     }else if(a == 'Agua' && b == 'Fuego'){
         crearMensaje('Ganaste')
+        enemyLifes --;
+        vidasEnemy.innerHTML = enemyLifes;
+
     }else if(a == 'Fuego' && b == 'Tierra'){
         crearMensaje('Ganaste')
+        enemyLifes --;
+        vidasEnemy.innerHTML = enemyLifes;
+
     }else if(a == 'Tierra' && b == 'Agua'){
         crearMensaje('Ganaste')
+        enemyLifes --;
+        vidasEnemy.innerHTML = enemyLifes;
+
     }else{
         crearMensaje('Perdiste')
+        playerLifes --;
+        vidasPlayer.innerHTML = playerLifes;
+        
     }
 
-      
+    checkLifes() 
+}
+
+function restartGame(){
+    location.reload()
+}
+
+
+function checkLifes(){
+    
+    if(enemyLifes == 0){
+        crearMensajeFinal("Has ganado, el Mokepon enemigo se ha debilitado")
+        let sectionRestart = document.getElementById(`restart`)
+        sectionRestart.style.display = `block`
+        
+
+    }else if(playerLifes == 0){
+        crearMensajeFinal("Has perdido, tu Mokepon se ha debilitado")
+        let sectionRestart = document.getElementById(`restart`)
+        sectionRestart.style.display = `block`
+        
+    }
 }
 
 startGame()

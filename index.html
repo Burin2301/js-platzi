@@ -5,60 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="./script.js" defer></script>
+    <script src="./script" defer></script> 
     <title>MOKEPON!</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <h1>MOKEPON! 
-        <img src="./assets/droplet.png" alt="water" width="30px">
-        <img src="./assets/fuego.png" alt="fire" width="30px">
-        <img src="./assets/hoja.png" alt="life" width="30px">
-    </h1>
+    <h1>MOKE<span>PON!</span> </h1>
     <br><br>
-    <section id="pets">
+    <section id="pets" class="pets">
         <h2>Elige a tu mascota!!</h2>
+        <br>      
+        <div class="cards">
+            <div class="hipodoge card">
+            
+                <input type="radio" name="pet" id="hipodoge">   
+                <label for="hipodoge"><img src="./assets/images/mokepons_mokepon_hipodoge_attack.png" alt=""><h4>Hipodoge <img src="./assets/droplet.png" alt="water" width="30px"></h4> </label>
+            </div>
+    
+            <div class="capipepo card">
+                
+                <input type="radio" name="pet" id="capipepo">  
+                <label for="capipepo"><img src="./assets/images/mokepons_mokepon_capipepo_attack.png" alt=""><h4>Capipepo  <img src="./assets/hoja.png" alt="life" width="30px"></h4> </label>
+            </div>
+            
+            <div class="ratigueya card">
+                <input type="radio" name="pet" id="ratigueya">  
+            <label for="ratigueya"><img src="./assets/images/mokepons_mokepon_ratigueya_attack.png" alt=""><h4>Ratigueya <img src="./assets/fuego.png" alt="fire" width="40px"></h4></label>
+            </div>
+    
+            <div class="mokeponEsconder">
+                <input type="radio" name="pet" id="langostelvis">  
+                <label for="langostelvis">Langostelvis <img src="./assets/droplet.png" alt="water" width="30px"> <img src="./assets/fuego.png" alt="fire" width="40px"> <br></label>
+    
+                <input type="radio" name="pet" id="tucapalma">  
+                <label for="tucapalma">Tucapalma <img src="./assets/droplet.png" alt="water" width="30px"> <img src="./assets/hoja.png" alt="life" width="30px"> <br></label>
+    
+                <input type="radio" name="pet" id="pydos">  
+                <label for="pydos">Pydos <img src="./assets/hoja.png" alt="life" width="30px"> <img src="./assets/fuego.png" alt="fire" width="40px"> <br><br></label>
+            </div>
+
+        </div>
         <br>
-
-        <input type="radio" name="pet" id="hipodoge">   
-        <label for="hipodoge">Hipodoge <img src="./assets/droplet.png" alt="water" width="30px"><br></label>
-
-        <input type="radio" name="pet" id="capipepo">  
-        <label for="capipepo">Capipepo <img src="./assets/hoja.png" alt="life" width="30px"><br></label>
-
-        <input type="radio" name="pet" id="ratigueya">  
-        <label for="ratigueya">Ratigueya <img src="./assets/fuego.png" alt="fire" width="40px"><br></label>
-
-        <input type="radio" name="pet" id="langostelvis">  
-        <label for="langostelvis">Langostelvis <img src="./assets/droplet.png" alt="water" width="30px"> <img src="./assets/fuego.png" alt="fire" width="40px"> <br></label>
-
-        <input type="radio" name="pet" id="tucapalma">  
-        <label for="tucapalma">Tucapalma <img src="./assets/droplet.png" alt="water" width="30px"> <img src="./assets/hoja.png" alt="life" width="30px"> <br></label>
-
-        <input type="radio" name="pet" id="pydos">  
-        <label for="pydos">Pydos <img src="./assets/hoja.png" alt="life" width="30px"> <img src="./assets/fuego.png" alt="fire" width="40px"> <br><br></label>
-
-        <br>
-        <button id="btn-choose-pet">Seleccionar</button>
+        <button id="btn-choose-pet" class="choose-pet-btn" >Seleccionar</button>
         <br>
         <br>
 
     </section>
 
-    <section id="chooseAttack">
+    <section id="chooseAttack" class="choose-attack" >
         <h2>Elige tu ataque!!</h2><br>
-        <p>Tu mascota es <span id="petPlayer"></span> y tiene <span>3</span> vidas</p><br>
-        <p>La mascota del enemigo es <span id="petEnemigo"></span> y tiene <span>3</span> vidas</p><br>
+        <p>Tu mascota es <span id="petPlayer"></span> y tiene <span id="ownLifes">3</span> vidas</p><br>
+        <p>La mascota del enemigo es <span id="petEnemigo"></span> y tiene <span id="enemyLifes">3</span> vidas</p><br>
 
         
         <p>
-            <button id="btnWaterAtk">Agua <img src="./assets/droplet.png" alt="water" width="30px"></button>
-            <button id="btnFireAtk">Fuego <img src="./assets/fuego.png" alt="fire" width="30px"></button>
-            <button id="btnDirtAtk">Tierra <img src="./assets/hoja.png" alt="life" width="30px"></button>
+            <button class="btn W" id="btnWaterAtk">Agua <img src="./assets/droplet.png" alt="water" width="30px"></button>
+            <button class="btn F" id="btnFireAtk">Fuego <img src="./assets/fuego.png" alt="fire" width="30px"></button>
+            <button class="btn D" id="btnDirtAtk">Tierra <img src="./assets/hoja.png" alt="life" width="30px"></button>
         </p><br>
 
     </section>
 
-    <section id="messages">
+    <section id="messages" class="message" >
         <p id="playerAtkMsg">Tu mascota <span id="petPlayerTwo"></span> ataco con <span id="playerAtk">ataque</span></p><br>
 
         
@@ -66,10 +78,15 @@
     </section>
     
     <br>
-    <section id="restart">
+    <section id="restart" class="restarting" >
         <button id="btn-restart">Reiniciar</button>
 
     </section>
+
+    <footer>
+        <h6>If you're thinking on buying something in coolors.com, try the next button!</h6>
+        <button class="referral"><a href="https://coolors.co/?ref=63f7e803f2690f000b6584d8" target="_blank">Referral</a></button>
+    </footer>
 
 
     
