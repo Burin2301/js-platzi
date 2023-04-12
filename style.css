@@ -43,7 +43,8 @@ input{
     display: none;
 }
 input:checked + label{
-    transform: scale(.9);
+    background-color: var(--orange-web);
+    border-radius: 50px;
     transform: .4s;
 }
 h2{

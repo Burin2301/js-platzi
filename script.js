@@ -5,44 +5,100 @@ let roundWinner;
 let playerLifes = 3;
 let enemyLifes = 3;
 
-let seccionMsg = document.getElementById(`messages`)
-let sectionRestart = document.getElementById(`lifeCards`)
+const sectionAtk = document.getElementById("chooseAttack");
+const seccionMsg = document.getElementById(`messages`);
+const sectionRestart = document.getElementById(`lifeCards`);
+const btnPetPlayer = document.getElementById(`btn-choose-pet`);
+const btnWater = document.getElementById(`btnWaterAtk`);
+const btnFire = document.getElementById(`btnFireAtk`);
+const btnDirt = document.getElementById(`btnDirtAtk`);
+const btnRestart = document.getElementById("btn-restart");
+const petEnemy = document.getElementById(`petEnemigo`);
+const sectionPets = document.getElementById(`pets`);
+const inputHipodoge = document.getElementById(`hipodoge`);
+const inputCapipepo = document.getElementById(`capipepo`);
+const inputRatigueya = document.getElementById(`ratigueya`);
+const inputLangostelvis = document.getElementById(`langostelvis`);
+const inputTucapalma = document.getElementById(`tucapalma`);
+const inputPydos = document.getElementById(`pydos`);
+const playerPet = document.getElementById(`petPlayer`);
+const vidasPlayer = document.getElementById("ownLifes");
+const vidasEnemy = document.getElementById ("enemyLifes");
+const decision = document.getElementById(`resultado`);
+const atkJugador = document.getElementById(`atkJugador`);
+const atkEnemigo = document.getElementById(`atkEnemigo`);
+const msgSection = document.getElementById(`messages`);
+const btnR = document.getElementById(`btn-restart`);
+
+let mokepones = []
+
+class Mokepon{
+    constructor(nombre, foto, vida){
+        this.nombre = nombre
+        this.foto = foto
+        this.vida = vida
+        this.ataques = []
+    }
+}
+let hipodoge = new Mokepon(`Hipodoge`,`./assets/images/mokepons_mokepon_hipodoge_attack.png`, `5`)
+
+let capipepo = new Mokepon(`Capipepo`,`./assets/images/mokepons_mokepon_capipepo_attack.png`,`5`)
+
+let ratigueya = new Mokepon(`Ratigueya`,`./assets/images/mokepons_mokepon_ratigueya_attack.png`,`5`)
+
+mokepones.push(hipodoge, capipepo, ratigueya)
+
+hipodoge.ataques.push(
+    {nombre: `Chorro Agua`, id:`btnWaterAtk`},
+    {nombre: `Agua Congelante`, id:`btnWaterAtk`},
+    {nombre: `Hidro-Rayo`, id:`btnWaterAtk`},
+    {nombre: `Chispa Flameante`, id:`btnFireAtk`},
+    {nombre: `Escombros`, id:`btnDirtAtk`}   
+)
+
+capipepo.ataques.push(
+    {nombre: `Tumba de Piedras`, id:`btnDirtAtk`},
+    {nombre: `Escombros`, id:`btnDirtAtk`},
+    {nombre: `Sismo`, id:`btnDirtAtk`},
+    {nombre: `Chorro Agua`, id:`btnWaterAtk`},
+    {nombre: `Magma Letal`, id:`btnFireAtk`}
+)
+
+ratigueya.ataques.push(
+    {nombre: `Magma Letal`, id:`btnFireAtk`},
+    {nombre: `Amaterasu`, id:`btnFireAtk`},
+    {nombre: `Llama Primordial`, id:`btnFireAtk`},
+    {nombre: `Derrumbe`, id:`btnDirtAtk`},
+    {nombre: `Chorro Agua`, id:`btnWaterAtk`},
+)
+
 
 function startGame(){
 
 
     //Escondo secciones para que al inicio solo se pueda elegir el mokepon
 
-    let sectionAtk = document.getElementById("chooseAttack")
     sectionAtk.style.display = `none`;
-
     
     seccionMsg.style.display = `none`
-    
-
-    let sectionRestart = document.getElementById(`lifeCards`)
+        
     sectionRestart.style.display = `none`
 
-
-    let btnPetPlayer = document.getElementById(`btn-choose-pet`);
     btnPetPlayer.addEventListener(`click`, choosePetPlayer);
     btnPetPlayer.addEventListener(`click`, choosePetEnemy);
-
-    let btnWater = document.getElementById(`btnWaterAtk`);
+    
     btnWater.addEventListener(`click`, waterAttack);
     btnWater.addEventListener(`click`, enemyChooseAttack);
-    
-
-    let btnFire = document.getElementById(`btnFireAtk`);
+        
     btnFire.addEventListener(`click`, fireAttack);
     btnFire.addEventListener(`click`, enemyChooseAttack);
 
-    let btnDirt = document.getElementById(`btnDirtAtk`);
+    
     btnDirt.addEventListener(`click`, dirtAttack);
     btnDirt.addEventListener(`click`, enemyChooseAttack);
 
 
-    let btnRestart = document.getElementById("btn-restart");
+    
     btnRestart.addEventListener(`click`,restartGame)
     btnRestart.style.display = `none`
     
@@ -65,26 +121,15 @@ function choosePetEnemy(){
         enemyPetChosen = `Pydos`;
     }
     enemyMokepon = enemyPetChosen
-    let petEnemy = document.getElementById(`petEnemigo`);
-    petEnemy.innerHTML= enemyPetChosen;
     
+    petEnemy.innerHTML= enemyPetChosen;
+    seccionMsg.style.display = `flex`
 }
 
 function choosePetPlayer(){
-    
-    let sectionPets = document.getElementById(`pets`)
+        
     sectionPets.style.display = `none`
-    let sectionAtk = document.getElementById("chooseAttack")
     sectionAtk.style.display = `flex`; 
-
-
-
-    let inputHipodoge = document.getElementById(`hipodoge`);
-    let inputCapipepo = document.getElementById(`capipepo`);
-    let inputRatigueya = document.getElementById(`ratigueya`);
-    let inputLangostelvis = document.getElementById(`langostelvis`);
-    let inputTucapalma = document.getElementById(`tucapalma`);
-    let inputPydos = document.getElementById(`pydos`);
 
     let pet
 
@@ -102,27 +147,23 @@ function choosePetPlayer(){
         pet = `Pydos`        
     }else alert(`Elige una mascota!!`);
 
-    let playerPet = document.getElementById(`petPlayer`);
     playerPet.innerHTML= pet;
-
-    let btnPetPlayer = document.getElementById(`btn-choose-pet`);
+    
+    
     btnPetPlayer.disabled = true;
 
 }
 
 function waterAttack(){
     playerAttack = `Agua`;
-    seccionMsg.style.display = `flex`
     sectionRestart.style.display = `flex`
 }
 function fireAttack(){
     playerAttack = `Fuego`;    
-    seccionMsg.style.display = `flex`
     sectionRestart.style.display = `flex`
 }
 function dirtAttack(){
     playerAttack = `Tierra`;
-    seccionMsg.style.display = `flex`
     sectionRestart.style.display = `flex`
 }
 
@@ -142,9 +183,7 @@ function enemyChooseAttack(){
 }
 
 function crearMensaje(resultado){
-    let decision = document.getElementById(`resultado`)
-    let atkJugador = document.getElementById(`atkJugador`)
-    let atkEnemigo = document.getElementById(`atkEnemigo`)
+    
 
     
     let newAtkPlayer = document.createElement(`p`)
@@ -163,32 +202,26 @@ function crearMensajeFinal(resultadoFinal){
     let parrafoFinal = document.createElement(`p`);
     parrafoFinal.classList.add(`parrafoFinal`)
     parrafoFinal.innerHTML = resultadoFinal
-    let msgSection = document.getElementById(`messages`);
     msgSection.appendChild(parrafoFinal)
-
-    let btnWater = document.getElementById(`btnWaterAtk`);
-    btnWater.disabled = true
-    ;
     
 
-    let btnFire = document.getElementById(`btnFireAtk`);
+    btnWater.disabled = true
+    
+    
+
     btnFire.disabled = true;
 
 
-    let btnDirt = document.getElementById(`btnDirtAtk`);
     btnDirt.disabled = true;
 
     
 
 }
 
-//logica: water>fire fire>dirt dirt>water Winner
-//logica: fire>water dirt>fire water>dirt Lose
 
 function battle(a,b){
 
-    let vidasPlayer = document.getElementById("ownLifes");
-    let vidasEnemy = document.getElementById ("enemyLifes");
+
 
     if(a == b){
         crearMensaje('Empate')
@@ -227,13 +260,12 @@ function checkLifes(){
     
     if(enemyLifes == 0){
         crearMensajeFinal("Has ganado, el Mokepon enemigo se ha debilitado")
-        let btnR = document.getElementById(`btn-restart`)
         btnR.style.display = `block`
         
-
+        
     }else if(playerLifes == 0){
         crearMensajeFinal("Has perdido, tu Mokepon se ha debilitado")
-        let btnR = document.getElementById(`btn-restart`)
+        
         btnR.style.display = `block`
         
     }
