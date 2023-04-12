@@ -5,6 +5,9 @@ let roundWinner;
 let playerLifes = 3;
 let enemyLifes = 3;
 
+let seccionMsg = document.getElementById(`messages`)
+let sectionRestart = document.getElementById(`lifeCards`)
+
 function startGame(){
 
 
@@ -12,9 +15,12 @@ function startGame(){
 
     let sectionAtk = document.getElementById("chooseAttack")
     sectionAtk.style.display = `none`;
-    let sectionMsg = document.getElementById(`messages`)
-    sectionMsg.style.display = `none`
-    let sectionRestart = document.getElementById(`restart`)
+
+    
+    seccionMsg.style.display = `none`
+    
+
+    let sectionRestart = document.getElementById(`lifeCards`)
     sectionRestart.style.display = `none`
 
 
@@ -38,6 +44,7 @@ function startGame(){
 
     let btnRestart = document.getElementById("btn-restart");
     btnRestart.addEventListener(`click`,restartGame)
+    btnRestart.style.display = `none`
     
 }
 
@@ -96,9 +103,7 @@ function choosePetPlayer(){
     }else alert(`Elige una mascota!!`);
 
     let playerPet = document.getElementById(`petPlayer`);
-    let playerPetTwo = document.getElementById(`petPlayerTwo`);
     playerPet.innerHTML= pet;
-    playerPetTwo.innerHTML= pet;
 
     let btnPetPlayer = document.getElementById(`btn-choose-pet`);
     btnPetPlayer.disabled = true;
@@ -107,25 +112,18 @@ function choosePetPlayer(){
 
 function waterAttack(){
     playerAttack = `Agua`;
-    let playerAttackTipe = document.getElementById(`playerAtk`);
-    playerAttackTipe.innerHTML= playerAttack;
-    let sectionMsg = document.getElementById(`messages`)
-    sectionMsg.style.display = `flex`
+    seccionMsg.style.display = `flex`
+    sectionRestart.style.display = `flex`
 }
 function fireAttack(){
-    playerAttack = `Fuego`;
-    let playerAttackTipe = document.getElementById(`playerAtk`);
-    playerAttackTipe.innerHTML= playerAttack;
-    let sectionMsg = document.getElementById(`messages`)
-    sectionMsg.style.display = `block`
-    
+    playerAttack = `Fuego`;    
+    seccionMsg.style.display = `flex`
+    sectionRestart.style.display = `flex`
 }
 function dirtAttack(){
     playerAttack = `Tierra`;
-    let playerAttackTipe = document.getElementById(`playerAtk`);
-    playerAttackTipe.innerHTML= playerAttack;
-    let sectionMsg = document.getElementById(`messages`)
-    sectionMsg.style.display = `flex`
+    seccionMsg.style.display = `flex`
+    sectionRestart.style.display = `flex`
 }
 
 
@@ -144,15 +142,26 @@ function enemyChooseAttack(){
 }
 
 function crearMensaje(resultado){
-    let parrafo = document.createElement(`p`);
-    parrafo.innerHTML = `El enemigo uso `+ enemyMokepon + ` y atacó con ` + enemyAttack +` - `+ resultado;
-    let msgSection = document.getElementById(`messages`);
-    msgSection.appendChild(parrafo)
+    let decision = document.getElementById(`resultado`)
+    let atkJugador = document.getElementById(`atkJugador`)
+    let atkEnemigo = document.getElementById(`atkEnemigo`)
 
+    
+    let newAtkPlayer = document.createElement(`p`)
+    let NewAtkEnemy = document.createElement(`p`)
+
+    decision.innerHTML = resultado
+    newAtkPlayer.innerHTML= playerAttack
+    NewAtkEnemy.innerHTML = enemyAttack
+
+   
+    atkJugador.appendChild(newAtkPlayer)
+    atkEnemigo.appendChild(NewAtkEnemy)
 }
 
 function crearMensajeFinal(resultadoFinal){
     let parrafoFinal = document.createElement(`p`);
+    parrafoFinal.classList.add(`parrafoFinal`)
     parrafoFinal.innerHTML = resultadoFinal
     let msgSection = document.getElementById(`messages`);
     msgSection.appendChild(parrafoFinal)
@@ -168,6 +177,8 @@ function crearMensajeFinal(resultadoFinal){
 
     let btnDirt = document.getElementById(`btnDirtAtk`);
     btnDirt.disabled = true;
+
+    
 
 }
 
@@ -216,16 +227,18 @@ function checkLifes(){
     
     if(enemyLifes == 0){
         crearMensajeFinal("Has ganado, el Mokepon enemigo se ha debilitado")
-        let sectionRestart = document.getElementById(`restart`)
-        sectionRestart.style.display = `flex`
+        let btnR = document.getElementById(`btn-restart`)
+        btnR.style.display = `block`
         
 
     }else if(playerLifes == 0){
         crearMensajeFinal("Has perdido, tu Mokepon se ha debilitado")
-        let sectionRestart = document.getElementById(`restart`)
-        sectionRestart.style.display = `flex`
+        let btnR = document.getElementById(`btn-restart`)
+        btnR.style.display = `block`
         
     }
 }
 
 startGame()
+
+

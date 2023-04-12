@@ -12,6 +12,7 @@
 :root{
     --black: hsla(267, 73%, 3%, 1);
     --ucla-blue: hsla(205, 42%, 45%, 1);
+    --ucla-blue-light: hsl(205, 48%, 62%);
     --sea-green: hsla(134, 24%, 46%, 1);
     --orange-web: hsla(37, 98%, 53%, 1);
     --chestnut: hsla(5, 40%, 40%, 1);
@@ -19,157 +20,215 @@
     --fairy-tale: hsla(331, 61%, 84%, 1);
 }
 body{
-    height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--ucla-blue);
+    height: 100vh;
+}
+header{
+    width: 100%;
+    display: flex;
     align-items: center;
     justify-content: center;
-    background: url(./assets/images/Battle\ of\ Littledom\ Background\ Art.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-a{
-    text-decoration: none;
-}
-section {
-    display: flex;
 }
 h1{
-    font-size: 3.5rem;
-    color: var(--sea-green);
+    font-size: 2rem;
+    color: white;
 }
-h1 span{
-    font-size: 5rem;
-    color: var(--red-crayola);
+.pon{
+    font-size: 3rem;
+    color: red;
 }
-img{
-    max-width: 100%;
+input{
+    display: none;
 }
-.pets{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70vw;
-    flex-wrap: wrap;
+input:checked + label{
+    transform: scale(.9);
+    transform: .4s;
 }
 h2{
-    font-size: 1.8rem;
     text-align: center;
-    color: var(--sea-green);
-}
-.card{
-    width: 300px; 
-    color:var(--chestnut);
-}
-.card:hover{
-    transform: scale(1.2);
-    transition:0.5s;
-}
-.cards{
-    display: flex; 
-    margin: 30px;      
-}
-.choose-pet-btn{
-    background-color: var(--orange-web);
-    padding: .8rem;
-    border-radius: 30px;
-    margin: 50px;
-    color: var(--chestnut);
-}
-.choose-pet-btn:hover{
-    transform: scale(1.4);
-    background-color: var(--ucla-blue);
-    color: var(--orange-web);
-    transition: 0.5s;
-    
+    color: white;
+    font-size: 1.2rem;
 }
 
-.choose-attack{
-    background-color: var(--fairy-tale);
-    width: 60%;
-    height: 50vh;
+/*SECCION PETS*/
+.pets{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: center;   
-    margin: 20px;
-    border-radius: 30px;
+    flex-wrap: wrap;
 }
-.choose-attack p{
-    color: black;
-}
-.btn{
+.cards{
     align-items: center;
     justify-content: center;
-    padding: 15px;
-    border-radius: 20px;
-    background-color: var();
-    color: white;
-    margin: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;    
 }
-.btn:hover{
+.card{
+    background-color: var(--ucla-blue-light);
+    border-radius: 50px;
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.card:hover{
+    transform: translateY(-2px);
+    background-color: var(--orange-web);
+    transition: .5s;
+    cursor: pointer;
+}
+h4{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mascota{
+    width: 200px;
+    height: auto;
+}
+.choose-pet-btn{
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: var(--red-crayola);
+    color: white;
+    font-weight: bold;
+}
+.choose-pet-btn:hover{
+    cursor: pointer;
+    color: black;
+    background-color: var(--orange-web);
     transform: scale(1.3);
     transition: .4s;
 }
-.W{
+
+
+/*RESTART BUTTON*/
+.restart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+.restartbtn{
+    box-sizing: content-box;
+    padding: 1rem 1.8rem;
+    border-radius: 30px;
+    background-color: var(--red-crayola);
+    color: white;
+}
+.restartbtn:hover{
+    transform: scale(1.3);
+    transform: translateY(10px);
+    transition: .8s;
     background-color: var(--orange-web);
+    color: black;
 }
-.F{
-    background-color: var(--ucla-blue);
+/* SECCION ATAUQES */
+
+.choose-attack{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
-.D{
-    background-color: var(--chestnut);
+
+.ataques{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.btn{
+    width: 250px;
+    height: 250px;
+    border-radius: 50px;
+    background-color: var(--ucla-blue-light);
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+}
+.btn:hover{
+    cursor: pointer;
+    color: black;
+    background-color: var(--orange-web);
+    transform: scale(1.1);
+    transition: .4s;
+
 }
 
 
+/*RESULTADO*/
 .message{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    border: 10px solid var(--orange-web);
+    background-color: var(--ucla-blue-light);
+    border-radius: 30px;
 }
-.message h3{
+.resultado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 15px;
-    background-color: var(--ucla-blue);
     color: white;
-    border-radius: 30px;
+    
+
 }
-.message .platerAtk{
-    text-align: center;
-    background-color: var(--orange-web);
-    color: var(--ucla-blue);
-    border-radius: 30px;
-}
-.message p{
-    text-align: center;
-    background-color: var(--orange-web);
-    color: var(--ucla-blue);
-    border-radius: 30px;
+.parrafoFinal{
+    margin: 20px;
+    color: white;
 }
 
-.restartbtn{
-    padding: 15px;  
-    background-color: var(--fairy-tale);  
-    color: black;
-    border-radius: 10px;
+
+/*CARTAS FINALES*/
+.lifeCards{
+    display: grid;
+    grid-template-columns: 200px 200px;
+    align-self: center;
 }
+
+.card-life{
+    background-color: var(--orange-web);
+    border-radius: 20px;
+    margin: 10px;
+    padding: 20px;
+}
+.c1 h4{
+    color: black;
+}
+
+
+
+
 
 footer{
-    display: flex;
     width: 100%;
+    display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 8px 30px;
-    background-color: var(--sea-green);
-    margin-top: auto;
+    justify-content: center;
 }
-.referral{
-    padding: 5px 10px;
-    background-color: var(--ucla-blue);
-    border-radius: 15px;
-    
-}
-.referral:hover{
-    transform: scale(1.3);
-    transition: 0.5s;
+
+
+/*MEDIA QUERIES*/
+/*RESPONSIVE DESGIGN*/
+
+@media (max-width: 400px){
+    .cards, .ataques{      
+        flex-direction: column;
+    }
+    footer{
+        display: none;
+    }
 }

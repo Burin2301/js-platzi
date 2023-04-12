@@ -14,27 +14,40 @@
 
 </head>
 <body>
-    <h1>MOKE<span>PON!</span> </h1>
-    <br><br>
+    <header>
+        <h1>MOKE<span class="pon">PON!</span> </h1>
+    </header>
     <section id="pets" class="pets">
-        <h2>Elige a tu mascota!!</h2>
-        <br>      
+        <h2>Elige a tu mascota!!</h2>     
         <div class="cards">
             <div class="hipodoge card">
-            
                 <input type="radio" name="pet" id="hipodoge">   
-                <label for="hipodoge"><img src="./assets/images/mokepons_mokepon_hipodoge_attack.png" alt=""><h4>Hipodoge <img src="./assets/droplet.png" alt="water" width="30px"></h4> </label>
+                <label for="hipodoge">
+                    <h4>Hipodoge 
+                        <img src="./assets/droplet.png" alt="water" width="30px">
+                        <img class="mascota" src="./assets/images/mokepons_mokepon_hipodoge_attack.png" alt="">
+                    </h4> 
+                </label>
             </div>
     
             <div class="capipepo card">
-                
                 <input type="radio" name="pet" id="capipepo">  
-                <label for="capipepo"><img src="./assets/images/mokepons_mokepon_capipepo_attack.png" alt=""><h4>Capipepo  <img src="./assets/hoja.png" alt="life" width="30px"></h4> </label>
+                <label for="capipepo">
+                    <h4>Capipepo  
+                        <img src="./assets/hoja.png" alt="life" width="30px">
+                        <img class="mascota" src="./assets/images/mokepons_mokepon_capipepo_attack.png" alt="">
+                    </h4> 
+                </label>
             </div>
             
             <div class="ratigueya card">
                 <input type="radio" name="pet" id="ratigueya">  
-            <label for="ratigueya"><img src="./assets/images/mokepons_mokepon_ratigueya_attack.png" alt=""><h4>Ratigueya <img src="./assets/fuego.png" alt="fire" width="40px"></h4></label>
+                <label for="ratigueya">
+                    <h4>Ratigueya 
+                        <img src="./assets/fuego.png" alt="fire" width="40px">
+                        <img class="mascota" src="./assets/images/mokepons_mokepon_ratigueya_attack.png" alt="">
+                    </h4>
+                </label>
             </div>
     
             <div class="mokeponEsconder">
@@ -58,33 +71,66 @@
 
     <section id="chooseAttack" class="choose-attack" >
         <h2>Elige tu ataque!!</h2><br>
-        <p>Tu mascota es <span id="petPlayer"></span> y tiene <span id="ownLifes">3</span> vidas</p><br>
-        <p>La mascota del enemigo es <span id="petEnemigo"></span> y tiene <span id="enemyLifes">3</span> vidas</p><br>
 
-        
-        <p>
+        <div class="ataques">
             <button class="btn W" id="btnWaterAtk">Agua <img src="./assets/droplet.png" alt="water" width="30px"></button>
             <button class="btn F" id="btnFireAtk">Fuego <img src="./assets/fuego.png" alt="fire" width="30px"></button>
             <button class="btn D" id="btnDirtAtk">Tierra <img src="./assets/hoja.png" alt="life" width="30px"></button>
-        </p><br>
+        </div>
+        
+        
 
-    </section>
-
-    <section id="messages" class="message" >
-        <h3>Tu ataque: </h3>
-        <p id="playerAtkMsg" class="platerAtk">Tu mascota <span id="petPlayerTwo"></span> ataco con <span id="playerAtk">ataque</span></p><br>
-
+        
+        
         
         
     </section>
     
-    <br>
-    <section id="restart" class="restarting" >
-        <button id="btn-restart" class="restartbtn">Reiniciar</button>
+    <section id="messages" class="message" >
+        <section id="restart" class="restart">
+            <button id="btn-restart" class="restartbtn">Reiniciar</button>
+        </section>
+        <p class="resultado" id="resultado">Vas a cagar hijo de tu perra madre</p>        
+    </section>
+
+
+
+    <section id="lifeCards" class="lifeCards">
+    
+        <div class="yourInfo card-life">      
+            <div class="playerPet c1">
+                <h4>Tu mascota</h4>
+                <span class="spans" id="petPlayer">pet</span>
+            </div>
+            <div class="playerAtks">
+                <div id="atkJugador"></div>
+            </div>
+
+            <div class="yourLifes lifes ">
+                <h5>Lifes</h5>
+                <span class="ownLifes" id="ownLifes">3</span>
+            </div>
+        </div>
+
+        <div class="enemyInfo card-life">     
+            <div class="enemyPet  c1">        
+              <h4>Enemigo</h4>             
+              <span class="spans" id="petEnemigo">pet</span> 
+            </div>
+
+            <div class="enemyAtks">
+                <div id="atkEnemigo"></div>
+            </div>
+
+            <div class="hisLifes lifes">
+                <h5>Lifes</h5>
+                <span class="ownLifes" id="enemyLifes">3</span>
+            </div>
+        </div>
 
     </section>
-    <br>
-    <br>
+    
+
 
     <footer>
         <h6>If you're thinking on buying something in coolors.com, try the next button!</h6>
